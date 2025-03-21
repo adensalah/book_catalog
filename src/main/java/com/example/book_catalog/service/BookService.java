@@ -1,55 +1,46 @@
 package com.example.book_catalog.service;
 
 import com.example.book_catalog.model.Book;
-import com.example.book_catalog.repository.BookMapper;
+import com.example.book_catalog.repository.BookRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
 public class BookService {
 
-    private final BookMapper bookMapper;
+    private final BookRepository bookRepository;
 
-    // Constructor injection of BookMapper (MyBatis repository)
-    public BookService(BookMapper bookMapper) {
-        this.bookMapper = bookMapper;
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
-    public List<Book> searchBooks(String keyword) {
-        return bookMapper.searchBooks("%" + keyword + "%");
-    }
-
-
-    // Get all books
+    // ✅ Get all books
     public List<Book> getAllBooks() {
-        return bookMapper.getAllBooks();
+        return bookRepository.findAll();
     }
 
-    // Get a book by ID
+    // ✅ Get book by ID
     public Book getBookById(Long id) {
-        return bookMapper.getBookById(id);
+        return bookRepository.findById(id).orElse(null);
     }
 
-    // Add a new book
+    // ✅ Add book
     public void addBook(Book book) {
-        bookMapper.insertBook(book);
+        bookRepository.save(book);
     }
 
-    public void addListOfBooks(List<Book> books) {
-        for (Book book: books) {
-            bookMapper.insertBook(book);
-        }
-    }
-
-    // Update an existing book
+    // ✅ Update book
     public void updateBook(Book book) {
-        bookMapper.updateBook(book);
+        bookRepository.save(book);
     }
 
-    // Delete a book
+    // ✅ Delete book
     public void deleteBook(Long id) {
-        bookMapper.deleteBook(id);
+        bookRepository.deleteById(id);
+    }
+
+    // ✅ **New: Search books by title or author**
+    public List<Book> searchBooks(String keyword) {
+        return bookRepository.findByTitleContainingOrAuthorContaining(keyword, keyword);
     }
 }
-

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Book</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+
+<h1 class="text-center">📖 Book Details</h1>
+
+<div class="card p-4 shadow">
+    <h3 th:text="${book.title}"></h3>
+    <p><strong>Author:</strong> <span th:text="${book.author}"></span></p>
+    <p><strong>ISBN:</strong> <span th:text="${book.isbn}"></span></p>
+    <p><strong>Published Year:</strong> <span th:text="${book.publishedYear}"></span></p>
+</div>
+
+<div class="text-center mt-4">
+    <a href="/books" class="btn btn-secondary">⬅ Back to Books</a>
+</div>
+
+<!-- Bootstrap Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

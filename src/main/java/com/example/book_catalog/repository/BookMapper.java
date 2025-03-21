@@ -24,8 +24,7 @@ public interface BookMapper {
     @Delete("DELETE FROM books WHERE id = #{id}")
     void deleteBook(Long id);
 
-    @Select("SELECT * FROM books WHERE title LIKE #{keyword} OR author LIKE #{keyword}")
+    @Select("SELECT * FROM books WHERE title LIKE CONCAT('%', #{keyword}, '%') OR author LIKE CONCAT('%', #{keyword}, '%')")
     List<Book> searchBooks(@Param("keyword") String keyword);
-
 }
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard - Book Catalog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+
+<h1 class="text-center">📖 User Dashboard</h1>
+
+<div class="text-end mb-3">
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="btn btn-danger">🚪 Logout</button>
+    </form>
+</div>
+
+<!-- Book List -->
+<table class="table table-striped table-hover shadow">
+    <thead class="table-dark">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Year</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.isbn}"></td>
+        <td th:text="${book.publishedYear}"></td>
+        <td>
+            <a th:href="@{/user/books/favorites/{id}(id=${book.id})}" class="btn btn-success btn-sm">⭐ Favorite</a>
+            <a th:href="@{/user/books/view/{id}(id=${book.id})}" class="btn btn-info btn-sm">👁 View</a>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Bootstrap Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

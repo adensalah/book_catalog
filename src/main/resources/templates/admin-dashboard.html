@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+<h1 class="text-center mb-4">🚀 Admin Dashboard</h1>
+
+<a href="/admin/add" class="btn btn-success mb-3">➕ Add New Book</a>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Year</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.isbn}"></td>
+        <td th:text="${book.publishedYear}"></td>
+        <td>
+            <a th:href="@{/admin/edit/{id}(id=${book.id})}" class="btn btn-warning">✏ Edit</a>
+            <a th:href="@{/admin/delete/{id}(id=${book.id})}" class="btn btn-danger"
+               onclick="return confirm('Are you sure you want to delete this book?');">🗑 Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/logout" class="btn btn-danger">🚪 Logout</a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
