@@ -1,10 +1,10 @@
 # book_catalog
 
-Here’s a **detailed README** for your **SmartBookCatalog** project. It covers **project structure, configuration, and implementation details** for Spring Boot, MyBatis, and Web Services. 🚀  
+Here’s a **detailed README** for your **Book_Catalog** project. It covers **project structure, configuration, and implementation details** for Spring Boot, MyBatis, and Web Services. 🚀  
 
 ---
 
-# 📚 SmartBookCatalog  
+# 📚 Book_Catalog  
 An online book catalog system built with **Spring Boot**, **MyBatis**, **Spring Security**, and **Thymeleaf**.
 
 ## 🏗️ Project Structure  
@@ -13,7 +13,7 @@ An online book catalog system built with **Spring Boot**, **MyBatis**, **Spring 
 SmartBookCatalog/
 │── src/
 │   ├── main/
-│   │   ├── java/com/example/smartbookcatalog/
+│   │   ├── java/com/example/book_catalog/
 │   │   │   ├── controller/         # Controllers (Admin, User, Authentication, Home)
 │   │   │   ├── service/            # Business logic layer
 │   │   │   ├── repository/         # MyBatis mappers (data access layer)
@@ -44,7 +44,7 @@ SmartBookCatalog/
 Configured in `application.properties`:
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/smartbookcatalog
+spring.datasource.url=jdbc:mysql://localhost:3306/book_catalog_db
 spring.datasource.username=root
 spring.datasource.password=root
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
@@ -259,10 +259,3 @@ mvn spring-boot:run
 - ✅ Implement **unit & integration testing**
 
 ---
-
-## 🤝 **Contributing**
-Pull requests are welcome! 🎉 Please ensure your code follows best practices and is well-documented.
-
----
-
-🚀 **Congratulations!** Now your **README** is **detailed, structured, and easy to understand!** 🎯
